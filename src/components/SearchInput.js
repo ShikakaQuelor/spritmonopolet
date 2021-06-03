@@ -1,34 +1,42 @@
-import React, { Component } from "react";
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-export default class SearchInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { searchQuery: "" };
+const SearchInput = ({ big = true }) => {
+  const [searchQuery, setSearchQuery] = useState("")
+  const history = useHistory();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
   }
 
-  handleChange(event) {
-    this.setState({ searchQuery: event.target.value });
+  const resetInputField = () => {
+    setSearchQuery("")
   }
 
-  handleSubmit(event) {
-    console.log(event.target.value);
-
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return
+    history.push({
+      pathname: "/search",
+      search: "?query=" + searchQuery.trim()
+    });
+    resetInputField();
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
+
+  return (
+    <div className={big ? "SearchWrap-big" : "SearchWrap"}>
+      <form className="SearchForm" onSubmit={handleSubmit}>
         <input
-          value={this.state.searchQuery}
-          onChange={this.handleChange}
+          className="SearchInput"
+          value={searchQuery}
+          onChange={handleChange}
           type="text"
-          placeholder="Sök här"
+          placeholder="Sök här efter alkodryck"
         />
       </form>
-    );
-  }
+    </div>
+  )
 }
+
+export default SearchInput;
