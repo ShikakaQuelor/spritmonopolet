@@ -1,3 +1,19 @@
+# Spritmonopolet
+
+# Why
+I've created this to start my learning into React and deepen my kneowledge in javascript.
+
+# TO-DO
+*Implement restricted searchresults and scroll-flow
+*Further styling
+*Optimiztions
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
