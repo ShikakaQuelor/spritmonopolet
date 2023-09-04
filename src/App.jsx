@@ -4,7 +4,7 @@ import SearchResults from "./pages/SearchResults";
 import About from "./pages/About";
 import Footer from "./components/Footer";
 
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Route path="/" exact element={<Home />} />
       <Route path="/search" element={<SearchResults />} />
       <Route path="/about" exact element={<About />} />
+      <Footer/>
     </Routes>
   );
 }
