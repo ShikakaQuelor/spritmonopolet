@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { createSearchParams, useNavigate, useLocation } from 'react-router-dom'
 
 const SearchInput = ({ big = true }) => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
@@ -16,10 +16,7 @@ const SearchInput = ({ big = true }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return
-    history.push({
-      pathname: "/search",
-      search: "?query=" + searchQuery.trim()
-    });
+    navigate({ pathname: "/search", search: `?${createSearchParams({ query: searchQuery })}` })
     resetInputField();
   }
 

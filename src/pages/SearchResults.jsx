@@ -11,8 +11,8 @@ import "../styles/searchResults.scss";
 const URL = "https://skatt.herrborgstrom.se/products/";
 const VAR = "https://skatt.herrborgstrom.se/variables";
 
-const SearchResults = (props) => {
-  const { search } = useLocation();
+const SearchResults = () => {
+  const { search } = useLocation()
   const [state, dispatch] = useReducer(reducer, initialState);
   const parsed = queryString.parse(search);
   const [limit, setLimit] = useState(10);
